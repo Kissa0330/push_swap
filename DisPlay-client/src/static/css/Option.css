@@ -1,0 +1,43 @@
+.optionWrapper{
+  opacity: 1;
+}
+header {
+  margin: 35px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+h1.headerTitle {
+  margin: 0 142px 0 0;
+}
+img.arrow {
+  margin: 7px 0 0 38px;
+}
+.customOptionHeader {
+  margin: 43px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+h3.customOptionTitle{
+  font-weight: 400;
+  text-align: left;
+  margin: 0 0 0 20px;
+}
+button.LandscapeButton.RessetingButton{
+  width: 85px;
+  height: 20px;
+  margin: 2px 15px 0 0;
+  font-size: 8px;
+}
+.logoutSection{
+  margin:35px 0 35px 0 ;
+}
+h3.logoutTitle{
+  font-weight: 400;
+  text-align: left;
+  margin: 0 0 0 20px;
+}
+.Logout.LandscapeButton {
+  display: block;
+  margin: 15px auto 0 17px;
+}
+

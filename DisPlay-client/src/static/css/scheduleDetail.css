@@ -1,0 +1,61 @@
+.scheduleDetail {
+  position: fixed;
+  top: 80px;
+  margin: 100px 12px 0 12px;
+  background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+    -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
+  border-radius: 14px;
+  width: 351px;
+  height: 240px;
+}
+.detailHeader {
+  display: flex;
+  justify-content: space-between;
+}
+h3.captionText {
+  font-family: "Roboto", sans-serif;
+  margin: 26px 0 0 27px;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 300;
+}
+img.stick{
+  display: block;
+  margin: 0 auto 0 27px;
+  height: 1px;
+  width: 87px;
+}
+img.stick.first{
+  margin: 0 0 0 27px;
+  vertical-align: top;
+  height: 1px;
+  width: 87px;
+}
+.link {
+  display: flex;
+}
+.editText {
+  text-align: right;
+  margin: 24px 16px 0 0;
+  font-family: "Roboto", sans-serif;
+  color: #8baaf0;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  font-size: 15px;
+}
+img.X {
+  cursor: pointer;
+  margin: 0 28px 0 0;
+}
+
+.field h2 {
+  margin: 10px 0 0 28px;
+  text-align: left;
+}
+.field h2.memoText {
+  font-size: 13px;
+}
+.field {
+  display: flex;
+}

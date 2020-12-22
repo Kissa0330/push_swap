@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+body {
+  text-align: center;
+  width: 375px;
+  margin: 0 auto 0 auto;
+}
+.v-application--wrap {
+  background: linear-gradient(30deg, #e1e8f0, #f4f6fc);
+  font-family: "Roboto", sans-serif;
+  color: #2c2c2c;
+}
+h1 {
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  font-weight: 400;
+}
+h2 {
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.15em;
+}
+h3 {
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: 0.15em;
+}
+h4 {
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+}
+p {
+  font-weight: 300;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: #646464;
+}
+a{
+  color: #6AB2FA !important;
+  text-decoration: underline;
+  text-underline-offset: 2.4px;
+}
+.LandscapeButton {
+  width: 55px;
+  height: 18px;
+  font-size: 8px;
+  border-radius: 8px;
+  background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
+  letter-spacing: 0.15em;
+  text-align: center;
+  font-weight: 300;
+}
+button {
+  font-family: "Roboto", sans-serif;
+  color: #9f9f9f;
+  font-weight: 300;
+  box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+    -1.5px -1.5px 3px rgba(248, 253, 255, 0.9), inset 1px 1.5px 3px transparent,
+    inset -1px -1.5px 3px transparent;
+  transition: box-shadow 0.5s;
+}
+button:active {
+  box-shadow: 1.5px 1.5px 3px transparent, -1.5px -1.5px 3px transparent,
+    inset 1px 1.5px 3px rgba(0, 0, 0, 0.1),
+    inset -1px -1.5px 3px rgba(248, 253, 255, 0.9);
+}
+.Login.LandscapeButton {
+  background: linear-gradient(45deg, #65b2ff, #5f9be0);
+  width: 103px;
+  height: 29px;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 400;
+}
+button:active.Login {
+  box-shadow: 1.5px 1.5px 3px transparent, -1.5px -1.5px 3px transparent,
+    inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+    inset -1.5px -1.5px 3px rgba(149, 205, 250, 0.6);
+}
+.Logout.LandscapeButton {
+  font-weight: 400;
+  background: linear-gradient(15deg, #ff6262, #fa5e5e);
+  width: 103px;
+  height: 29px;
+  color: #ffffff;
+  font-size: 11px;
+}
+button:active.Logout {
+  box-shadow: 1.5px 1.5px 3px transparent, -1.5px -1.5px 3px transparent,
+    inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+    inset -1.5px -1.5px 3px rgba(255, 179, 171, 0.6);
+}
+.CircleButton {
+  background: linear-gradient(15deg, #fdfdfd, #f7f7f7);
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  box-shadow: 1.5px 1.5px 3px 0px rgb(0, 0, 0, 0.16);
+}
+.PlayImg {
+  margin: 0 0 0 2.5px;
+}
+button:focus {
+	outline:0;
+}
+input:focus {
+  outline: 0;
+}

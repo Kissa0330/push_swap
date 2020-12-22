@@ -1,0 +1,5 @@
+*~
+.DS_Store
+.idea
+.eslintrc.json
+node_modules

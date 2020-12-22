@@ -1,0 +1,12 @@
+[
+  { "name": "red", "color": "#fe08b5", "color1": "#ff1410" },
+  { "name": "lightBlue", "color": "72c3ff", "color1": "61cad8" },
+  { "name": "pink", "color": "ff729d", "color1": "e86789" },
+  { "name": "blue", "color": "#65B2FF", "color1": "#5F9BE0" },
+  { "name": "green", "color": "#BEEAA6", "color1": "#89D568" },
+  { "name": "orange", "color": "#FCB47E", "color1": "#DE863C" },
+  { "name": "purple", "color": "8872ff", "color1": "7861d8" },
+  { "name": "lightPurple", "color": "#D48BEF", "color1": "#AA37DD" },
+  { "name": "emerald", "color": "#8BEFEF", "color1": "#37DDB0" },
+  { "name": "lightRed", "color": "#EF8B8B", "color1": "#EB5869" }
+]

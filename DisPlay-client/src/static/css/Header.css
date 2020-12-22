@@ -1,0 +1,11 @@
+.Header{
+  margin: 40px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+h1.Headertitle{
+  margin:0 0 0 138px;
+}
+img.Gear{
+  margin:6.5px 27px 0 0;
+}

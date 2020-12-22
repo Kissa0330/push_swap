@@ -1,0 +1,42 @@
+.TodoMenu {
+  display: flex;
+  margin: 70px 0 25px 0;
+  justify-content: space-between;
+}
+.MenuRight {
+  margin-left: 38px;
+}
+.MenuLeft {
+  display: flex;
+  margin-right: 38px;
+  align-items: flex-start;
+}
+.MenuLeft .LandscapeButton {
+  margin-right: 12px;
+}
+.MenuLeft img {
+  margin-top: 1px;
+}
+.TaskList {
+  margin: 6px 0 0 2px;
+}
+.Task {
+  display: flex;
+  margin: 25px 0 0 38px;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+h4.TaskTitle {
+  width: 163px;
+  text-align: left;
+}
+button.Play {
+  margin: 0 0 0 58px;
+}
+button.Check {
+  margin: 0 0 0 15px;
+}
+p.TaskDeadline {
+  margin: -8px 0 0 3px;
+  text-align: left;
+}
