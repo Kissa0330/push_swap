@@ -56,7 +56,19 @@ void	sort_num(int *tab)
 
 void	ft_sort_int_tab(int *tab, int size)
 {
+	int	i;
+
+	i = 0;
 	g_size = size;
-	sort_num(tab);
-	sort_num(tab);
+	while (i < g_size)
+	{
+		if (*(tab + i) < *(tab + i - 1))
+		{
+			sort_num(tab);
+		}
+		else
+		{
+			i++;
+		}
+	}
 }
