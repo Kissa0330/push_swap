@@ -5,7 +5,7 @@ int main(void)
 {
 	int nb;
 
-	nb = 189225;
+	nb = 1522756;
 	printf("%d", ft_sqrt(nb));
 	return (0);
 }

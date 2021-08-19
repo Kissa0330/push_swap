@@ -5,7 +5,7 @@ int main(void)
 {
 	int nb;
 
-	nb = 97;
+	nb = 121;
 	printf("%d ==> %d\n", nb, ft_is_prime(nb));
 	return (0);
 }

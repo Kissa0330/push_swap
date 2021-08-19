@@ -6,8 +6,8 @@ int main(void)
 	int nb;
 	int power;
 
-	nb = 2;
-	power = 21;
+	nb = -2;
+	power = 29;
 	printf("%d", ft_iterative_power(nb, power));
 	return (0);
 }

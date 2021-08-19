@@ -6,8 +6,8 @@ int main(void)
 	int nb;
 	int power;
 
-	nb = 4;
-	power = 14;
+	nb = 13;
+	power = 2;
 	printf("%d", ft_recursive_power(nb, power));
 	return (0);
 }

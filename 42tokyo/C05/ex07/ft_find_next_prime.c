@@ -1,19 +1,17 @@
 int	ft_find_next_prime(int nb)
 {
 	int	i;
-	int	cnt;
 
-	cnt = 0;
 	if (nb <= 1)
 		return (2);
-	i = 1;
-	while (i <= nb)
+	i = 2;
+	while (i <= nb / 2)
 	{
 		if (nb % i == 0)
-			cnt++;
+		{
+			return (ft_find_next_prime(nb + 1));
+		}
 		i++;
 	}
-	if (cnt == 2)
-		return (nb);
-	return (ft_find_next_prime(nb + 1));
+	return (nb);
 }
