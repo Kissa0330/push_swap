@@ -11,5 +11,5 @@
 
 	void		push_swap(long long length, char **list_origin);
 	long long	ft_atoi(const char *str);
-	void		error_output(void *stack);
+	void		error_output(void *stack1, void *stack2);
 #endif

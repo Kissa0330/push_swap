@@ -10,11 +10,13 @@ static void	list_check(char **list_origin)
 	while (list_origin[i] != NULL)
 	{
 		j = 0;
+		if (list_origin[i][0] == '+' || list_origin[i][0] == '-')
+			j ++;
 		while (list_origin[i][j] != '\0')
 		{
 			c = list_origin[i][j];
-			if (!(c >= '0' && c <= '9' || c == '+' || c == '-'))
-				error_output(NULL);
+			if (!(c >= '0' && c <= '9'))
+				error_output(NULL, NULL);
 			j++;
 		}
 		i++;
@@ -28,17 +30,17 @@ static t_lists	atoi_list(char **list_origin, long long length)
 	t_lists		lists;
 
 	lists.a = malloc((length + 1)* sizeof(int));
-	if(lists.a)
-		error_output(NULL);
+	if(!lists.a)
+		error_output(NULL, NULL);
 	lists.b = malloc((length + 1)* sizeof(int));
-	if(lists.b)
-		error_output(NULL);
+	if(!lists.b)
+		error_output(lists.a, NULL);
 	i = 0;
 	while(list_origin[i] != NULL)
 	{
 		tmp = ft_atoi(list_origin[i]);
 		if(tmp > 2147483647 || tmp < -2147483648)
-			error_output(&lists);
+			error_output(lists.a, lists.b);
 		lists.a[i] = tmp;
 		i ++;
 	}

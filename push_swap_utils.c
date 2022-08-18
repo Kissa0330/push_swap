@@ -21,10 +21,12 @@ long long ft_atoi(const char *str)
 	return (num * negativeflag);
 }
 
-void	error_output(void *stack)
+void	error_output(void *stack1, void *stack2)
 {
-	if (stack)
-		free(stack);
+	if (stack1)
+		free(stack1);
+	if (stack2)
+		free(stack2);
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }
