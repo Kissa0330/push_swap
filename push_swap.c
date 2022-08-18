@@ -23,7 +23,7 @@ static void	list_check(char **list_origin)
 	}
 }
 
-static t_lists	atoi_list(char **list_origin, long long length)
+static t_lists	atoi_list(char **list_origin, size_t length)
 {
 	int			i;
 	long long	tmp;
@@ -35,6 +35,7 @@ static t_lists	atoi_list(char **list_origin, long long length)
 	lists.b = malloc((length + 1)* sizeof(int));
 	if(!lists.b)
 		error_output(lists.a, NULL);
+	ft_bzero(lists.b, length);
 	i = 0;
 	while(list_origin[i] != NULL)
 	{
@@ -44,16 +45,22 @@ static t_lists	atoi_list(char **list_origin, long long length)
 		lists.a[i] = tmp;
 		i ++;
 	}
-	return lists;
+	return (lists);
 }
 
-void	push_swap(long long length, char **list_origin)
+static void	*swap(t_lists lists)
+{
+	return NULL;
+}
+
+int	*push_swap(size_t length, char **list_origin)
 {
 	t_lists lists;
 
 	if(list_origin[0] == NULL)
-		return ;
+		return (NULL);
 	list_check(list_origin);
 	lists = atoi_list(list_origin, length);
-	// swap(lists);
+	swap(lists);
+	return (lists.a);
 }

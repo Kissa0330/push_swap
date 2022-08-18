@@ -9,7 +9,8 @@
 		int *b;
 	}	t_lists;
 
-	void		push_swap(long long length, char **list_origin);
+	int			*push_swap(size_t length, char **list_origin);
 	long long	ft_atoi(const char *str);
 	void		error_output(void *stack1, void *stack2);
+	void		ft_bzero(void *s, size_t n);
 #endif
