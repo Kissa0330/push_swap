@@ -2,6 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-	push_swap(argc - 1, (char **)&argv[1]);
+	push_swap((char **)&argv[1]);
+	push_swap(NULL);
 	return 0;
 }

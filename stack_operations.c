@@ -16,7 +16,7 @@ int	*push(int *list1, int *list2)
 	return (list1);
 }
 
-int	*rotate(int mod, int *list, int length)
+int	*rotate(int mod, int *list, size_t length)
 {
 	int i;
 	int tmp;

@@ -1,9 +1,10 @@
 #include "push_swap.h"
+#include <stdio.h>
 
 static void	list_check(char **list_origin)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 	char	c;
 
 	i = 0;
@@ -25,7 +26,7 @@ static void	list_check(char **list_origin)
 
 static t_lists	atoi_list(char **list_origin, size_t length)
 {
-	int			i;
+	size_t		i;
 	long long	tmp;
 	t_lists		lists;
 
@@ -53,13 +54,19 @@ static void	*swap(t_lists lists)
 	return NULL;
 }
 
-int	*push_swap(size_t length, char **list_origin)
+int	*push_swap(char **list_origin)
 {
-	t_lists lists;
+	t_lists	lists;
+	size_t	length;
 
+	if(list_origin == NULL)
+		return (NULL);
 	if(list_origin[0] == NULL)
 		return (NULL);
 	list_check(list_origin);
+	length = 0;
+	while (list_origin[length] != NULL)
+		length++;
 	lists = atoi_list(list_origin, length);
 	swap(lists);
 	return (lists.a);
