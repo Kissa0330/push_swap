@@ -38,19 +38,3 @@ int	*rotate(int mod, int *list, size_t length)
 	list[i - mod] = tmp;
 	return (list);
 }
-
-int main(int argc, char const *argv[])
-{
-	int	i;
-	int	list[5] = {1, 2, 3, 4, 5};
-	int	*new_list;
-	
-	new_list = rotate(-1, list, 5);
-	i = 0;
-	while(i < 5)
-	{
-		printf("%d\n", new_list[i]);
-		i ++;
-	}
-	return 0;
-}
