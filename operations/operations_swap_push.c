@@ -19,14 +19,14 @@ void	command_ss(t_lists lists)
 	write(1, "ss\n", 3);
 }
 
-void	command_pa(t_lists lists, size_t length)
+void	command_pa(t_lists lists, size_t len)
 {
-	push(lists.a, lists.b, length);
+	push(lists.a, lists.b, len);
 	write(1, "pa\n", 3);
 }
 
-void	command_pb(t_lists lists, size_t length)
+void	command_pb(t_lists lists, size_t len)
 {
-	push(lists.b, lists.a,length);
+	push(lists.b, lists.a,len);
 	write(1, "pb\n", 3);
 }

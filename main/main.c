@@ -5,9 +5,9 @@ int	main(int argc, char const *argv[])
 {
 	int	*new_list;
 
-	printf("before\n");
-	for (size_t i = 0; i < argc - 1; i++)
-		printf("%s ", argv[i + 1]);
+	// printf("before\n");
+	// for (size_t i = 0; i < argc - 1; i++)
+	// 	printf("%s ", argv[i + 1]);
 	new_list = push_swap((char **)&argv[1]);
 	printf("\nafter\n");
 	for (size_t i = 0; i < argc - 1; i++)
@@ -17,6 +17,7 @@ int	main(int argc, char const *argv[])
 }
 
 /*
+#include <stdio.h>
 int main(int argc, char const *argv[])
 {
 	t_lists lists;

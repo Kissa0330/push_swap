@@ -23,16 +23,16 @@ static void	list_check(char **list_origin)
 	}
 }
 
-static t_lists	atoi_list(char **list_origin, size_t length)
+static t_lists	atoi_list(char **list_origin, size_t len)
 {
 	size_t		i;
 	long long	tmp;
 	t_lists		lists;
 
-	lists.a = malloc((length + 1) * sizeof(int));
+	lists.a = malloc((len + 1) * sizeof(int));
 	if (!lists.a)
 		error_output(NULL, NULL);
-	lists.b = malloc((length + 1) * sizeof(int));
+	lists.b = malloc((len + 1) * sizeof(int));
 	if (!lists.b)
 		error_output(lists.a, NULL);
 	i = 0;
@@ -42,42 +42,43 @@ static t_lists	atoi_list(char **list_origin, size_t length)
 		if (tmp > 2147483647 || tmp < -2147483648)
 			error_output(lists.a, lists.b);
 		lists.a[i] = tmp;
+		lists.b[i] = 0;
 		i ++;
 	}
 	return (lists);
 }
 
-static int	*do_swap(t_lists lists, size_t length)
+static int	*do_swap(t_lists lists, size_t len)
 {
 	int	separater;
 
-	if (length == 1)
+	if (len == 1)
 		return (lists.a);
-	if (length == 2)
+	if (len == 2)
 	{
 		if(lists.a[0] > lists.a[1])
 			command_sa(lists);
 		return (lists.a);;
 	}
-	if (length == 3)
-		return (three_sort(lists));
+	if (len == 3)
+		return (three_sort(lists, len));
 	separater = lists.a[0];
-	separate_list(lists, separater);
-	do_quicksort(lists, length);
+	separate_list(lists, separater, len);
+	// do_quicksort(lists, len);
 	return (lists.a);
 }
 
 int	*push_swap(char **list_origin)
 {
 	t_lists	lists;
-	size_t	length;
+	size_t	len;
 
 	if (list_origin == NULL)
 		return (NULL);
 	list_check(list_origin);
-	length = 0;
-	while (list_origin[length] != NULL)
-		length++;
-	lists = atoi_list(list_origin, length);
-	return (do_swap(lists, length));
+	len = 0;
+	while (list_origin[len] != NULL)
+		len++;
+	lists = atoi_list(list_origin, len);
+	return (do_swap(lists, len));
 }

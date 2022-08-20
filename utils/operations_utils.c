@@ -10,11 +10,11 @@ int	*swap(int *list)
 	return (list);
 }
 
-int	*push(int *list1, int *list2, size_t length)
+int	*push(int *list1, int *list2, size_t len)
 {
 	size_t	i;
 
-	i = length - 1;
+	i = len - 1;
 	while (i > 0)
 	{
 		list1[i] = list1[i - 1];
@@ -22,7 +22,7 @@ int	*push(int *list1, int *list2, size_t length)
 	}
 	list1[0] = list2[0];
 	i = 0;
-	while (i < length - 1)
+	while (i < len - 1)
 	{
 		list2[i] = list2[i + 1];
 		i++;
@@ -31,21 +31,38 @@ int	*push(int *list1, int *list2, size_t length)
 	return (list1);
 }
 
-int	*rotate(int mod, int *list, size_t length)
+int	init_i(int mod, size_t len)
+{
+	if (mod == -1)
+		return (len - 1);
+	return (0);
+}
+
+int	*rotate(int mod, int *list, size_t len)
 {
 	size_t	i;
 	int		tmp;
 
-	if (mod == -1)
-		i = length - 1;
-	else if (mod == 1)
-		i = 0;
+	i = init_i(mod, len);
 	tmp = list[i];
-	while (length >= i + 1 && i >= 0)
+	while (len - 1 >= i && i >= 0)
 	{
 		list[i] = list[i + mod];
+		if ((mod == -1 && i == 0) || (mod == 1 && i == len - 1))
+			break ;
 		i += mod;
 	}
-	list[i - mod] = tmp;
+	list[i] = tmp;
+	i = len - 1;
+	while (i > 0)
+	{
+		if (list[i] == 0)
+		{
+			tmp = list[i];
+			list[i] = list[i + 1];
+			list[i + 1] = tmp;
+		}
+		i --;
+	}
 	return (list);
 }
