@@ -27,6 +27,6 @@ void		command_rr(t_lists lists, size_t len);
 void		command_rra(t_lists lists, size_t len);
 void		command_rrb(t_lists lists, size_t len);
 void		command_rrr(t_lists lists, size_t len);
-int			*three_sort(t_lists lists, size_t len);
+int			*three_sort(int *a, t_lists lists, size_t len);
 void		separate_list(t_lists lists, int separater, size_t len);
 #endif

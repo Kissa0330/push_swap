@@ -61,7 +61,7 @@ static int	*do_swap(t_lists lists, size_t len)
 		return (lists.a);;
 	}
 	if (len == 3)
-		return (three_sort(lists, len));
+		return (three_sort(lists.a, lists, len));
 	separater = lists.a[0];
 	separate_list(lists, separater, len);
 	// do_quicksort(lists, len);
