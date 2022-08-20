@@ -47,9 +47,24 @@ static t_lists	atoi_list(char **list_origin, size_t length)
 	return (lists);
 }
 
-static void	*do_swap(t_lists lists)
+static int	*do_swap(t_lists lists, size_t length)
 {
-	return (NULL);
+	int	separater;
+
+	if (length == 1)
+		return (lists.a);
+	if (length == 2)
+	{
+		if(lists.a[0] > lists.a[1])
+			command_sa(lists);
+		return (lists.a);;
+	}
+	if (length == 3)
+		return (three_sort(lists));
+	separater = lists.a[0];
+	separate_list(lists, separater);
+	do_quicksort(lists, length);
+	return (lists.a);
 }
 
 int	*push_swap(char **list_origin)
@@ -59,13 +74,10 @@ int	*push_swap(char **list_origin)
 
 	if (list_origin == NULL)
 		return (NULL);
-	if (list_origin[0] == NULL)
-		return (NULL);
 	list_check(list_origin);
 	length = 0;
 	while (list_origin[length] != NULL)
 		length++;
 	lists = atoi_list(list_origin, length);
-	do_swap(lists);
-	return (lists.a);
+	return (do_swap(lists, length));
 }

@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	command_rra(t_lists lists, size_t length)
 {
