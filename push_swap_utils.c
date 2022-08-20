@@ -21,20 +21,6 @@ long long	ft_atoi(const char *str)
 	return (num * negativeflag);
 }
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-	unsigned char	*str;
-
-	i = 0;
-	str = (unsigned char *)s;
-	while (i < n)
-	{
-		*str++ = '\0';
-		i++;
-	}
-}
-
 void	error_output(void *stack1, void *stack2)
 {
 	if (stack1)

@@ -10,17 +10,31 @@ int	*swap(int *list)
 	return (list);
 }
 
-int	*push(int *list1, int *list2)
+int	*push(int *list1, int *list2, size_t length)
 {
-	if (list2 != NULL)
-		list1[0] = list2[0];
+	size_t	i;
+
+	i = length - 1;
+	while (i > 0)
+	{
+		list1[i] = list1[i - 1];
+		i--;
+	}
+	list1[0] = list2[0];
+	i = 0;
+	while (i < length - 1)
+	{
+		list2[i] = list2[i + 1];
+		i++;
+	}
+	list2[i] = 0;
 	return (list1);
 }
 
 int	*rotate(int mod, int *list, size_t length)
 {
-	int	i;
-	int	tmp;
+	size_t	i;
+	int		tmp;
 
 	if (mod == -1)
 		i = length - 1;

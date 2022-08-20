@@ -35,7 +35,6 @@ static t_lists	atoi_list(char **list_origin, size_t length)
 	lists.b = malloc((length + 1) * sizeof(int));
 	if (!lists.b)
 		error_output(lists.a, NULL);
-	ft_bzero(lists.b, length);
 	i = 0;
 	while (list_origin[i] != NULL)
 	{
@@ -48,7 +47,7 @@ static t_lists	atoi_list(char **list_origin, size_t length)
 	return (lists);
 }
 
-static void	*swap(t_lists lists)
+static void	*do_swap(t_lists lists)
 {
 	return (NULL);
 }
@@ -67,6 +66,6 @@ int	*push_swap(char **list_origin)
 	while (list_origin[length] != NULL)
 		length++;
 	lists = atoi_list(list_origin, length);
-	swap(lists);
+	do_swap(lists);
 	return (lists.a);
 }
