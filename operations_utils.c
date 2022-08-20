@@ -12,7 +12,8 @@ int	*swap(int *list)
 
 int	*push(int *list1, int *list2)
 {
-	list1[0] = list2[0];
+	if (list2 != NULL)
+		list1[0] = list2[0];
 	return (list1);
 }
 
