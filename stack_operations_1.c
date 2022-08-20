@@ -20,6 +20,19 @@ void	command_ss(t_lists lists)
 	write(1, "ss\n", 3);
 }
 
+void	command_pa(t_lists lists)
+{
+	push(lists.a, lists.b);
+	write(1, "pa\n", 3);
+}
+
+void	command_pb(t_lists lists)
+{
+	push(lists.b, lists.a);
+	write(1, "pb\n", 3);
+}
+
+/*
 int main(int argc, char const *argv[])
 {
 	t_lists lists;
@@ -29,7 +42,7 @@ int main(int argc, char const *argv[])
 	lists.a = a;
 	lists.b = b;
 
-	command_sa(lists);
+	command_pb(lists);
 	printf("lists.a\n");
 	for (size_t i = 0; i < 5; i++)
 		printf("%d ", lists.a[i]);
@@ -39,3 +52,4 @@ int main(int argc, char const *argv[])
 	printf("\n");
 	return 0;
 }
+*/
