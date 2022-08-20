@@ -4,7 +4,7 @@ int	*swap(int *list)
 {
 	int	tmp;
 
-	list[0] = tmp;
+	tmp = list[0];
 	list[0] = list[1];
 	list[1] = tmp;
 	return (list);
