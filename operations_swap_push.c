@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 void	command_sa(t_lists lists)
 {
@@ -31,25 +30,3 @@ void	command_pb(t_lists lists)
 	push(lists.b, lists.a);
 	write(1, "pb\n", 3);
 }
-
-/*
-int main(int argc, char const *argv[])
-{
-	t_lists lists;
-
-	int a[5] = {1, 2, 3, 4, 5};
-	int b[5] = {5, 4, 3, 2, 1};
-	lists.a = a;
-	lists.b = b;
-
-	command_pb(lists);
-	printf("lists.a\n");
-	for (size_t i = 0; i < 5; i++)
-		printf("%d ", lists.a[i]);
-	printf("\nlists.b\n");
-	for (size_t i = 0; i < 5; i++)
-		printf("%d ", lists.b[i]);
-	printf("\n");
-	return 0;
-}
-*/
