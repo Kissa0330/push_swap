@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
 
 int *swap(int *list)
 {
@@ -27,12 +26,9 @@ int	*rotate(int mod, int *list, size_t length)
 	else if (mod == 1)
 		i = 0;
 	tmp = list[i];
-	printf("i == %d  length == %zu\n", i, length);
 	while (length >= i + 1 && i >= 0)
 	{
 		list[i] = list[i + mod];
-		printf("list[i] == %d\n", list[i]);
-		printf("i == %d\n", i);
 		i += mod;
 	}
 	list[i - mod] = tmp;
