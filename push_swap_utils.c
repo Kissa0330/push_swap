@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-long long ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	int				negativeflag;
 	long long		num;

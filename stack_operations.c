@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int *swap(int *list)
+int	*swap(int *list)
 {
 	int	tmp;
 
