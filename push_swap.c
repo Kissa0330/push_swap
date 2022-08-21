@@ -29,20 +29,16 @@ static t_lists	atoi_list(char **list_origin, size_t len)
 	long long	tmp;
 	t_lists		lists;
 
-	lists.a = malloc((len + 1) * sizeof(int));
+	lists.a = malloc((len) * sizeof(int));
 	if (!lists.a)
 		error_output(NULL, NULL);
-	lists.b = malloc((len + 1) * sizeof(int));
-	if (!lists.b)
-		error_output(lists.a, NULL);
 	i = 0;
 	while (list_origin[i] != NULL)
 	{
-		tmp = ft_atoi(list_origin[i]);
+		tmp = ft_atol(list_origin[i]);
 		if (tmp > 2147483647 || tmp < -2147483648)
 			error_output(lists.a, lists.b);
 		lists.a[i] = tmp;
-		lists.b[i] = 0;
 		i ++;
 	}
 	return (lists);
@@ -50,7 +46,7 @@ static t_lists	atoi_list(char **list_origin, size_t len)
 
 static int	*do_swap(t_lists lists, size_t len)
 {
-	int	separater;
+	size_t	i;
 
 	if (len == 1)
 		return (lists.a);
@@ -62,9 +58,18 @@ static int	*do_swap(t_lists lists, size_t len)
 	}
 	if (len == 3)
 		return (three_sort(lists.a, lists, len));
-	separater = lists.a[0];
-	separate_list(lists, separater, len);
-	// do_quicksort(lists, len);
+	if (is_sorted(lists.a, len))
+		return (lists.a);
+	lists.b = malloc((len) * sizeof(int));
+	if (!lists.b)
+		error_output(lists.a, NULL);
+	i = 0;
+	while (i < len)
+	{
+		lists.b[i] = 0;
+		i ++;
+	}
+	do_quicksort(lists, len);
 	return (lists.a);
 }
 

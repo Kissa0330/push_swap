@@ -3,6 +3,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdbool.h>
 
 typedef struct s_lists
 {
@@ -11,7 +12,7 @@ typedef struct s_lists
 }	t_lists;
 
 int			*push_swap(char **list_origin);
-long long	ft_atoi(const char *str);
+long long	ft_atol(const char *str);
 void		error_output(void *stack1, void *stack2);
 int			*swap(int *list);
 int			*push(int *list1, int *list2, size_t len);
@@ -28,5 +29,7 @@ void		command_rra(t_lists lists, size_t len);
 void		command_rrb(t_lists lists, size_t len);
 void		command_rrr(t_lists lists, size_t len);
 int			*three_sort(int *a, t_lists lists, size_t len);
+bool		is_sorted(int *list, size_t len);
 void		separate_list(t_lists lists, int separater, size_t len);
+void		do_quicksort(t_lists lists, size_t len);
 #endif
