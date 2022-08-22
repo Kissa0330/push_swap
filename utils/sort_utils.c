@@ -2,7 +2,7 @@
 
 int	*three_sort(int *a, t_lists lists, size_t len)
 {
-	if (a[0] > a[1] && a[1] < a[2] && a[0] < a[2])
+	if (a[0] > a[1] && a[1] < a[2])
 		command_sa(lists);
 	if (a[0] < a[1] && a[1] > a[2] && a[0] > a[2])
 		command_rra(lists, len);
@@ -18,12 +18,6 @@ int	*three_sort(int *a, t_lists lists, size_t len)
 		command_rra(lists, len);
 		command_sa(lists);
 	}
-	if (a[0] > a[2])
-		command_ra(lists, len);
-	if (a[0] > a[1])
-		command_sa(lists);
-	if (a[1] > a[2])
-		command_rra(lists, len);
 	return (a);
 }
 
@@ -47,7 +41,7 @@ bool	is_sorted(int *list, size_t len)
 	size_t	i;
 
 	i = 1;
-	if (list[0] == 0)
+	if (list[0] == 0 && list[len/2] == 0 && list[len-1] == 0)
 		return (false);
 	while (i < len)
 	{

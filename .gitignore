@@ -1,4 +1,7 @@
+/tester
 .DS_store
-a.out
-push_swap.a
+push_swap_*
+push_swap
+lib_push_swap.a
 *.o
+checker

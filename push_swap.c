@@ -26,6 +26,7 @@ static void	list_check(char **list_origin)
 static t_lists	atoi_list(char **list_origin, size_t len)
 {
 	size_t		i;
+	size_t		j;
 	long long	tmp;
 	t_lists		lists;
 
@@ -37,7 +38,15 @@ static t_lists	atoi_list(char **list_origin, size_t len)
 	{
 		tmp = ft_atol(list_origin[i]);
 		if (tmp > 2147483647 || tmp < -2147483648)
-			error_output(lists.a, lists.b);
+			error_output(lists.a, NULL);
+		j = 0;
+		while (j < i)
+		{
+			if (lists.a[j] == tmp)
+				error_output(lists.a, NULL);
+			j++;
+		}
+		
 		lists.a[i] = tmp;
 		i ++;
 	}
@@ -78,7 +87,7 @@ int	*push_swap(char **list_origin)
 	t_lists	lists;
 	size_t	len;
 
-	if (list_origin == NULL)
+	if (list_origin == NULL || list_origin[0] == NULL)
 		return (NULL);
 	list_check(list_origin);
 	len = 0;
