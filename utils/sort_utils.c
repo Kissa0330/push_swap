@@ -8,7 +8,7 @@ void	separate_list(t_lists lists, int separater, size_t len)
 	while (len > i)
 	{
 		if (lists.a[0] >= separater)
-			command_pb(lists, len);
+			command_pb(lists, len, &lists.a_len, &lists.b_len);
 		else
 			command_ra(lists, len);
 		i ++;

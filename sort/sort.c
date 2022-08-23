@@ -29,7 +29,7 @@ int	*six_sort(t_lists lists, size_t len)
 	{
 		min = get_min(lists.a, lists.a_len);
 		if (lists.a[0] == min)
-			command_pb(lists, len);
+			command_pb(lists, len, &lists.a_len, &lists.b_len);
 		else
 			command_ra(lists, len);
 	}
@@ -51,7 +51,7 @@ void	do_quicksort(t_lists lists, size_t len)
 			max = get_max(lists.b, len);
 			while (max != lists.b[0])
 				command_rb(lists, len);
-			command_pa(lists, len);
+			command_pa(lists, len, &lists.a_len, &lists.b_len);
 		}
 	}
 }
