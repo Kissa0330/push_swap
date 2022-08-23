@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	*three_sort(int *a, t_lists lists, size_t len)
 {
@@ -36,6 +36,7 @@ int	*six_sort(t_lists lists, size_t len)
 	three_sort(lists.a, lists, len);
 	while (lists.b_len > 0)
 		command_pa(lists, len, &lists.a_len, &lists.b_len);
+	return (lists.a);
 }
 
 void	do_quicksort(t_lists lists, size_t len)

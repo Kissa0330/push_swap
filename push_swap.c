@@ -53,7 +53,7 @@ static t_lists	atoi_list(char **list_origin, size_t len)
 	return (lists);
 }
 
-static int	*do_swap(t_lists lists, size_t len)
+static int	*do_sort(t_lists lists, size_t len)
 {
 	if (len == 1)
 		return (lists.a);
@@ -90,5 +90,5 @@ int	*push_swap(char **list_origin)
 	lists = atoi_list(list_origin, len);
 	lists.a_len = len;
 	lists.b_len = 0;
-	return (do_swap(lists, len));
+	return (do_sort(lists, len));
 }
