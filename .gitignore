@@ -5,3 +5,4 @@ push_swap
 lib_push_swap.a
 *.o
 checker
+a.out
