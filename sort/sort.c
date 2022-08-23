@@ -34,7 +34,8 @@ int	*six_sort(t_lists lists, size_t len)
 			command_ra(lists, len);
 	}
 	three_sort(lists.a, lists, len);
-
+	while (lists.b_len > 0)
+		command_pa(lists, len, &lists.a_len, &lists.b_len);
 }
 
 void	do_quicksort(t_lists lists, size_t len)
