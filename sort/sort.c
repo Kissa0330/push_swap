@@ -38,22 +38,43 @@ int	*six_sort(t_lists lists)
 		command_pa(lists, &lists.a_len, &lists.b_len);
 	return (lists.a);
 }
-
+#include <stdio.h>
 void	do_quicksort(t_lists lists, size_t len)
 {
+	size_t	i;
 	int	separater;
 	int	max;
 
-	separater = -2147483648;
-	separate_list(&lists, separater, len);
-	while (!is_sorted(lists.a, lists.a_len))
+	// while (!is_sorted(lists.a, lists.a_len))
+	for (size_t j = 0; j < 5; j++)
 	{
+		separater = lists.a[0];
+		// printf("---separete start---\nseparater == %d\n", separater);
+		separate_list(&lists, separater, len);
+		// printf("---separete finish---\n");
+		i = 0;
+		// printf("---sort start---\n");
 		while (lists.b_len > 0)
 		{
-			max = get_max(lists.b, len);
+			max = get_max(lists.b, lists.b_len);
 			while (max != lists.b[0])
 				command_rb(lists);
 			command_pa(lists, &lists.a_len, &lists.b_len);
+			i ++;
 		}
+		// for (size_t j = 0; j < 10; j++)
+		// 	printf("%d ", lists.a[j]);
+		// printf("\n");
+		// printf("---sort finish---\n");
+		// printf("---rotate start---\n");
+		while (i > 0 && !is_sorted(lists.a, lists.a_len))
+		{
+			command_ra(lists);
+			i --;
+		}
+		// for (size_t j = 0; j < 10; j++)
+		// 	printf("%d ", lists.a[j]);
+		// printf("\n");
+		// printf("---rotate finish---\n");
 	}
 }

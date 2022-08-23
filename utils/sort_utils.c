@@ -30,7 +30,7 @@ bool	is_sorted(int *list, size_t len)
 	return (true);
 }
 
-int	get_max(int	*list, size_t len)
+int	get_max(int *list, size_t len)
 {
 	int		max;
 	size_t	i;
@@ -39,14 +39,14 @@ int	get_max(int	*list, size_t len)
 	i = 1;
 	while (i < len)
 	{
-		if (max < list[i] && list[i] != 0)
+		if (max < list[i])
 			max = list[i];
 		i ++;
 	}
 	return (max);
 }
 
-int	get_min(int	*list, size_t len)
+int	get_min(int *list, size_t len)
 {
 	int		min;
 	size_t	i;
@@ -55,9 +55,35 @@ int	get_min(int	*list, size_t len)
 	i = 1;
 	while (i < len)
 	{
-		if (min > list[i] && list[i] != 0)
+		if (min > list[i])
 			min = list[i];
 		i ++;
 	}
 	return (min);
+}
+
+int	get_median(int a, int b, int c)
+{
+	if (a < b && a < c)
+	{
+		if(b < c)
+			return (b);
+		else
+			return (c);
+	}
+	if (b < a && b < c)
+	{
+		if (a < c)
+			return (a);
+		else
+			return (c);
+	}
+	if (c < a && c < b)
+	{
+		if (a < b)
+			return (a);
+		else
+			return (b);
+	}
+	return (a);
 }

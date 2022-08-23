@@ -34,6 +34,7 @@ bool		is_sorted(int *list, size_t len);
 void		separate_list(t_lists *lists, int separater, size_t len);
 int			get_max(int	*list, size_t len);
 int			get_min(int	*list, size_t len);
+int			get_median(int a, int b, int c);
 int			*three_sort(int *a, t_lists lists);
 int			*six_sort(t_lists lists);
 void		do_quicksort(t_lists lists, size_t len);
