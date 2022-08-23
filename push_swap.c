@@ -55,8 +55,6 @@ static t_lists	atoi_list(char **list_origin, size_t len)
 
 static int	*do_swap(t_lists lists, size_t len)
 {
-	size_t	i;
-
 	if (len == 1)
 		return (lists.a);
 	if (len == 2)
@@ -67,17 +65,13 @@ static int	*do_swap(t_lists lists, size_t len)
 	}
 	if (len == 3)
 		return (three_sort(lists.a, lists, len));
+	if (len <= 6)
+		return (six_sort(lists, len));
 	if (is_sorted(lists.a, len))
 		return (lists.a);
 	lists.b = malloc((len) * sizeof(int));
 	if (!lists.b)
 		error_output(lists.a, NULL);
-	i = 0;
-	while (i < len)
-	{
-		lists.b[i] = 0;
-		i ++;
-	}
 	do_quicksort(lists, len);
 	return (lists.a);
 }
@@ -94,5 +88,7 @@ int	*push_swap(char **list_origin)
 	while (list_origin[len] != NULL)
 		len++;
 	lists = atoi_list(list_origin, len);
+	lists.a_len = len;
+	lists.b_len = 0;
 	return (do_swap(lists, len));
 }

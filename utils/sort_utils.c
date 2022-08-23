@@ -1,26 +1,5 @@
 #include "../push_swap.h"
 
-int	*three_sort(int *a, t_lists lists, size_t len)
-{
-	if (a[0] > a[1] && a[1] < a[2])
-		command_sa(lists);
-	if (a[0] < a[1] && a[1] > a[2] && a[0] > a[2])
-		command_rra(lists, len);
-	if (a[1] < a[2] && a[0] > a[2])
-		command_ra(lists, len);
-	if (a[0] > a[1] && a[1] > a[2])
-	{
-		command_sa(lists);
-		command_rra(lists, len);
-	}
-	if (a[1] > a[2] && a[0] < a[2])
-	{
-		command_rra(lists, len);
-		command_sa(lists);
-	}
-	return (a);
-}
-
 void	separate_list(t_lists lists, int separater, size_t len)
 {
 	size_t	i;
@@ -68,21 +47,18 @@ int	get_max(int	*list, size_t len)
 	return (max);
 }
 
-void	do_quicksort(t_lists lists, size_t len)
+int	get_min(int	*list, size_t len)
 {
-	int	separater;
-	int	max;
+	int		min;
+	size_t	i;
 
-	separater = -2147483648;
-	separate_list(lists, separater, len);
-	while (!is_sorted(lists.a, len))
+	min = list[0];
+	i = 1;
+	while (i < len)
 	{
-		while (lists.b[0] != 0)
-		{
-			max = get_max(lists.b, len);
-			while (max != lists.b[0])
-				command_rb(lists, len);
-			command_pa(lists, len);
-		}
+		if (min > list[i] && list[i] != 0)
+			min = list[i];
+		i ++;
 	}
+	return (min);
 }

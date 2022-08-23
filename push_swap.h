@@ -7,8 +7,10 @@
 
 typedef struct s_lists
 {
-	int	*a;
-	int	*b;
+	int		*a;
+	int		*b;
+	size_t	a_len;
+	size_t	b_len;
 }	t_lists;
 
 int			*push_swap(char **list_origin);
@@ -20,16 +22,19 @@ int			*rotate(int mod, int *list, size_t len);
 void		command_sa(t_lists lists);
 void		command_sb(t_lists lists);
 void		command_ss(t_lists lists);
-void		command_pa(t_lists lists, size_t len);
-void		command_pb(t_lists lists, size_t len);
+void		command_pa(t_lists lists, size_t len, size_t *a_len, size_t *b_len);
+void		command_pb(t_lists lists, size_t len, size_t *a_len, size_t *b_len);
 void		command_ra(t_lists lists, size_t len);
 void		command_rb(t_lists lists, size_t len);
 void		command_rr(t_lists lists, size_t len);
 void		command_rra(t_lists lists, size_t len);
 void		command_rrb(t_lists lists, size_t len);
 void		command_rrr(t_lists lists, size_t len);
-int			*three_sort(int *a, t_lists lists, size_t len);
 bool		is_sorted(int *list, size_t len);
 void		separate_list(t_lists lists, int separater, size_t len);
+int			get_max(int	*list, size_t len);
+int			get_min(int	*list, size_t len);
+int			*three_sort(int *a, t_lists lists, size_t len);
+int			*six_sort(t_lists lists, size_t len);
 void		do_quicksort(t_lists lists, size_t len);
 #endif
