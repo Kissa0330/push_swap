@@ -11,7 +11,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): ${OBJS}
+$(NAME): ${OBJS} main.c
 	ar rcs $(LIBNAME) $(OBJS)
 	gcc $(CFLAGS) -o $(NAME) -L. -l_push_swap main.c
 

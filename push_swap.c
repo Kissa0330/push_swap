@@ -64,13 +64,13 @@ static int	*do_sort(t_lists lists, size_t len)
 	}
 	if (len == 3)
 		return (three_sort(lists.a, lists));
-	if (len <= 6)
-		return (six_sort(lists, len));
 	if (is_sorted(lists.a, len))
 		return (lists.a);
 	lists.b = malloc((len) * sizeof(int));
 	if (!lists.b)
 		error_output(lists.a, NULL);
+	if (len <= 6)
+		return (six_sort(lists));
 	do_quicksort(lists, len);
 	return (lists.a);
 }

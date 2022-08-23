@@ -14,7 +14,7 @@ int	*push(int *list1, int *list2, size_t len_1, size_t len_2)
 {
 	size_t	i;
 
-	i = len_1 - 1;
+	i = len_1;
 	while (i > 0)
 	{
 		list1[i] = list1[i - 1];
@@ -22,7 +22,7 @@ int	*push(int *list1, int *list2, size_t len_1, size_t len_2)
 	}
 	list1[0] = list2[0];
 	i = 0;
-	while (i < len_2 - 1)
+	while (i < len_2)
 	{
 		list2[i] = list2[i + 1];
 		i++;

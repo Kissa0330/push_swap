@@ -45,10 +45,10 @@ void	do_quicksort(t_lists lists, size_t len)
 	int	max;
 
 	separater = -2147483648;
-	separate_list(lists, separater, len);
-	while (!is_sorted(lists.a, len))
+	separate_list(&lists, separater, len);
+	while (!is_sorted(lists.a, lists.a_len))
 	{
-		while (lists.b[0] != 0)
+		while (lists.b_len > 0)
 		{
 			max = get_max(lists.b, len);
 			while (max != lists.b[0])

@@ -31,7 +31,7 @@ void		command_rra(t_lists lists);
 void		command_rrb(t_lists lists);
 void		command_rrr(t_lists lists);
 bool		is_sorted(int *list, size_t len);
-void		separate_list(t_lists lists, int separater, size_t len);
+void		separate_list(t_lists *lists, int separater, size_t len);
 int			get_max(int	*list, size_t len);
 int			get_min(int	*list, size_t len);
 int			*three_sort(int *a, t_lists lists);

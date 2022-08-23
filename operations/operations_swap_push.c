@@ -34,7 +34,7 @@ void	command_pb(t_lists lists, size_t *a_len, size_t *b_len)
 {
 	if (lists.a_len > 0)
 	{
-		push(lists.b, lists.a, lists.b_len, lists.b_len);
+		push(lists.b, lists.a, lists.b_len, lists.a_len);
 		*a_len -= 1;
 		*b_len += 1;
 	}

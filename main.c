@@ -4,7 +4,6 @@
 int	main(int argc, char const *argv[])
 {
 	int	*new_list;
-	// push_swap((char **)&argv[1]);
 	new_list = push_swap((char **)&argv[1]);
 	// for (size_t i = 0; i < argc - (size_t)1; i++)
 	// 	printf("%d ", new_list[i]);
