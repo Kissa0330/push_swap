@@ -53,16 +53,5 @@ int	*rotate(int mod, int *list, size_t len)
 		i += mod;
 	}
 	list[i] = tmp;
-	i = len - 1;
-	while (i > 0)
-	{
-		if (list[i] == 0)
-		{
-			tmp = list[i];
-			list[i] = list[i + 1];
-			list[i + 1] = tmp;
-		}
-		i --;
-	}
 	return (list);
 }

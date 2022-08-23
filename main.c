@@ -22,8 +22,10 @@ int main(int argc, char const *argv[])
 	int b[5] = {5, 4, 3, 2, 1};
 	lists.a = a;
 	lists.b = b;
+	lists.a_len = 5;
+	lists.b_len = 5;
 
-	command_rr(lists, 5);
+	command_rr(lists);
 	printf("lists.a\n");
 	for (size_t i = 0; i < 5; i++)
 		printf("%d ", lists.a[i]);
