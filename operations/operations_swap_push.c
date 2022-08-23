@@ -19,22 +19,22 @@ void	command_ss(t_lists lists)
 	write(1, "ss\n", 3);
 }
 
-void	command_pa(t_lists lists, size_t len, size_t *a_len, size_t *b_len)
+void	command_pa(t_lists lists, size_t *a_len, size_t *b_len)
 {
 	if (lists.b_len > 0)
 	{
-		push(lists.a, lists.b, len);
+		push(lists.a, lists.b, lists.a_len, lists.b_len);
 		*a_len += 1;
 		*b_len -= 1;
 	}
 	write(1, "pa\n", 3);
 }
 
-void	command_pb(t_lists lists, size_t len, size_t *a_len, size_t *b_len)
+void	command_pb(t_lists lists, size_t *a_len, size_t *b_len)
 {
 	if (lists.a_len > 0)
 	{
-		push(lists.b, lists.a,len);
+		push(lists.b, lists.a, lists.b_len, lists.b_len);
 		*a_len -= 1;
 		*b_len += 1;
 	}

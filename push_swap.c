@@ -46,7 +46,6 @@ static t_lists	atoi_list(char **list_origin, size_t len)
 				error_output(lists.a, NULL);
 			j++;
 		}
-		
 		lists.a[i] = tmp;
 		i ++;
 	}
@@ -61,10 +60,10 @@ static int	*do_sort(t_lists lists, size_t len)
 	{
 		if(lists.a[0] > lists.a[1])
 			command_sa(lists);
-		return (lists.a);;
+		return (lists.a);
 	}
 	if (len == 3)
-		return (three_sort(lists.a, lists, len));
+		return (three_sort(lists.a, lists));
 	if (len <= 6)
 		return (six_sort(lists, len));
 	if (is_sorted(lists.a, len))
@@ -80,6 +79,7 @@ int	*push_swap(char **list_origin)
 {
 	t_lists	lists;
 	size_t	len;
+	int		*res;
 
 	if (list_origin == NULL || list_origin[0] == NULL)
 		return (NULL);
@@ -90,5 +90,8 @@ int	*push_swap(char **list_origin)
 	lists = atoi_list(list_origin, len);
 	lists.a_len = len;
 	lists.b_len = 0;
-	return (do_sort(lists, len));
+	res = do_sort(lists, len);
+	free (lists.a);
+	free (lists.b);
+	return (res);
 }

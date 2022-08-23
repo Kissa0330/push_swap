@@ -1,6 +1,6 @@
 #include "../push_swap.h"
 
-int	*three_sort(int *a, t_lists lists, size_t len)
+int	*three_sort(int *a, t_lists lists)
 {
 	if (a[0] > a[1] && a[1] < a[2])
 		command_sa(lists);
@@ -21,7 +21,7 @@ int	*three_sort(int *a, t_lists lists, size_t len)
 	return (a);
 }
 
-int	*six_sort(t_lists lists, size_t len)
+int	*six_sort(t_lists lists)
 {
 	int		min;
 
@@ -29,13 +29,13 @@ int	*six_sort(t_lists lists, size_t len)
 	{
 		min = get_min(lists.a, lists.a_len);
 		if (lists.a[0] == min)
-			command_pb(lists, len, &lists.a_len, &lists.b_len);
+			command_pb(lists, &lists.a_len, &lists.b_len);
 		else
 			command_ra(lists);
 	}
-	three_sort(lists.a, lists, len);
+	three_sort(lists.a, lists);
 	while (lists.b_len > 0)
-		command_pa(lists, len, &lists.a_len, &lists.b_len);
+		command_pa(lists, &lists.a_len, &lists.b_len);
 	return (lists.a);
 }
 
@@ -53,7 +53,7 @@ void	do_quicksort(t_lists lists, size_t len)
 			max = get_max(lists.b, len);
 			while (max != lists.b[0])
 				command_rb(lists);
-			command_pa(lists, len, &lists.a_len, &lists.b_len);
+			command_pa(lists, &lists.a_len, &lists.b_len);
 		}
 	}
 }

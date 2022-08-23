@@ -1,5 +1,5 @@
 /tester
-.DS_store
+.DS_Store
 push_swap_*
 push_swap
 lib_push_swap.a
