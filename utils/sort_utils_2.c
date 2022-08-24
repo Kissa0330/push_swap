@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:35 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/24 18:36:17 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 00:49:59 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,8 @@ int	get_separater(int *a, size_t separate_len)
 	m3 = get_med(a[div_len * 2], a[div_len - div_len / 2], a[separate_len - 1]);
 	return (get_med(m1, m2, m3));
 }
+
+// void	separate_list_b(t_lists *lists, int separater)
+// {
+	
+// }

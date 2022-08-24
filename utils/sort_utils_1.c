@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/24 18:34:45 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 00:38:23 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,11 @@ void	separate_list(t_lists *lists, int separater, size_t len)
 	while (len > i && separater <= get_max((*lists).a, (*lists).a_len))
 	{
 		if ((*lists).a[0] >= separater)
-		{
 			command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
-			if (sep_avg > (*lists).b[0])
-				command_rb(*lists);
-			if (separater > get_max((*lists).a, (*lists).a_len))
-				break ;
-		}
 		else
 			command_ra(*lists);
+		if (sep_avg > (*lists).b[0])
+			command_rb(*lists);
 		i ++;
 	}
 }
