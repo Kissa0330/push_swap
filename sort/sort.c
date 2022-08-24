@@ -42,37 +42,60 @@ int	*six_sort(t_lists lists)
 void	do_quicksort(t_lists lists, size_t len)
 {
 	size_t	i;
-	int	separater;
-	int	max;
+	size_t	sorted_len;
+	size_t	len_to_max;
+	int		separater;
+	int		max;
 
-	// while (!is_sorted(lists.a, lists.a_len))
-	for (size_t j = 0; j < 5; j++)
+	sorted_len = 0;
+	// printf("a_len == %zu\n", lists.a_len);
+	// printf("b_len == %zu\n", lists.b_len);
+	while (!is_sorted(lists.a, lists.a_len))
+	// for (size_t j = 0; j < 5; j++)
 	{
 		separater = lists.a[0];
+		if (sorted_len > len / 2 + len / 5)
+			separater = get_min(lists.a, len);
 		// printf("---separete start---\nseparater == %d\n", separater);
 		separate_list(&lists, separater, len);
 		// printf("---separete finish---\n");
-		i = 0;
+		i = lists.b_len;
+		// printf("a_len == %zu\n", lists.a_len);
+		// printf("b_len == %zu\n", lists.b_len);
 		// printf("---sort start---\n");
 		while (lists.b_len > 0)
 		{
 			max = get_max(lists.b, lists.b_len);
-			while (max != lists.b[0])
-				command_rb(lists);
+			len_to_max = get_lentomax(lists.b, lists.b_len);
+			// for (size_t j = 0; j < len; j++)
+			// 	printf("%d ", lists.b[j]);
+			// printf("\n");
+			// printf("len_to_max == %zu, len == %zu\n", len_to_max, len);
+			if (len_to_max >= lists.b_len / 2)
+			{
+				while (max != lists.b[0])
+					command_rrb(lists);
+			}
+			else if (len_to_max <= lists.b_len / 2)
+			{
+				while (max != lists.b[0])
+					command_rb(lists);
+			}
 			command_pa(lists, &lists.a_len, &lists.b_len);
-			i ++;
 		}
-		// for (size_t j = 0; j < 10; j++)
+		// for (size_t j = 0; j < len; j++)
 		// 	printf("%d ", lists.a[j]);
 		// printf("\n");
 		// printf("---sort finish---\n");
 		// printf("---rotate start---\n");
+		sorted_len = i;
 		while (i > 0 && !is_sorted(lists.a, lists.a_len))
 		{
 			command_ra(lists);
 			i --;
 		}
-		// for (size_t j = 0; j < 10; j++)
+		// printf("sorted_len == %zu\n", sorted_len);
+		// for (size_t j = 0; j < len; j++)
 		// 	printf("%d ", lists.a[j]);
 		// printf("\n");
 		// printf("---rotate finish---\n");
