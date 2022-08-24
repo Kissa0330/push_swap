@@ -43,6 +43,7 @@ void	do_quicksort(t_lists lists, size_t len)
 {
 	size_t	i;
 	size_t	sorted_len;
+	size_t	separate_len;
 	size_t	len_to_max;
 	int		separater;
 	int		max;
@@ -53,11 +54,12 @@ void	do_quicksort(t_lists lists, size_t len)
 	while (!is_sorted(lists.a, lists.a_len))
 	// for (size_t j = 0; j < 5; j++)
 	{
-		separater = lists.a[0];
-		if (sorted_len > len / 2 + len / 5)
-			separater = get_min(lists.a, len);
+		separate_len = lists.a_len - sorted_len;
+		separater = get_median(get_median(lists.a[0], lists.a[separate_len / 3 / 2], lists.a[separate_len / 3 - 1]),get_median(lists.a[separate_len / 3], lists.a[separate_len / 3 - separate_len / 3 / 2], lists.a[separate_len / 3 * 2 - 1]), get_median(lists.a[separate_len / 3 * 2], lists.a[separate_len / 3 - separate_len / 3 / 2], lists.a[separate_len - 1]));
+		if (sorted_len >= len / 2)
+			separater = get_min(lists.a, separate_len);
 		// printf("---separete start---\nseparater == %d\n", separater);
-		separate_list(&lists, separater, len);
+		separate_list(&lists, separater, separate_len);
 		// printf("---separete finish---\n");
 		i = lists.b_len;
 		// printf("a_len == %zu\n", lists.a_len);
@@ -88,11 +90,24 @@ void	do_quicksort(t_lists lists, size_t len)
 		// printf("\n");
 		// printf("---sort finish---\n");
 		// printf("---rotate start---\n");
-		sorted_len = i;
-		while (i > 0 && !is_sorted(lists.a, lists.a_len))
+		sorted_len += i;
+		if (sorted_len >= lists.a_len / 2)
 		{
-			command_ra(lists);
-			i --;
+			i = lists.a_len - sorted_len;
+			while (i > 0 && !is_sorted(lists.a, lists.a_len))
+			{
+				command_rra(lists);
+				i --;
+			}
+		}
+		else if (sorted_len <= lists.a_len / 2)
+		{
+			i = sorted_len;
+			while (i > 0 && !is_sorted(lists.a, lists.a_len))
+			{
+				command_ra(lists);
+				i --;
+			}
 		}
 		// printf("sorted_len == %zu\n", sorted_len);
 		// for (size_t j = 0; j < len; j++)
