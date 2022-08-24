@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:48 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/24 18:12:56 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/24 19:34:41 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ static void	list_check(char **list_origin)
 	{
 		j = 0;
 		if (list_origin[i][0] == '+' || list_origin[i][0] == '-')
+		{
+			if (c == '\0')
+				error_output(NULL, NULL);
 			j ++;
+		}
 		while (list_origin[i][j] != '\0')
 		{
 			c = list_origin[i][j];
