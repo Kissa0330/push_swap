@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 18:11:48 by takanoraika       #+#    #+#             */
+/*   Updated: 2022/08/24 18:12:56 by takanoraika      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	list_check(char **list_origin)
@@ -58,7 +70,7 @@ static int	*do_sort(t_lists lists, size_t len)
 		return (lists.a);
 	if (len == 2)
 	{
-		if(lists.a[0] > lists.a[1])
+		if (lists.a[0] > lists.a[1])
 			command_sa(lists);
 		return (lists.a);
 	}

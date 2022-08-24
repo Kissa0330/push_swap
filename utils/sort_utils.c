@@ -1,32 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/24 18:11:16 by takanoraika       #+#    #+#             */
+/*   Updated: 2022/08/24 18:14:13 by takanoraika      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	separate_list(t_lists *lists, int separater, size_t len)
 {
 	size_t	i;
-	size_t	lentosep;
-	size_t	Rlentosep;
 	int		sep_avg;
 
 	i = 0;
-	sep_avg =(get_max((*lists).a, len) + separater) / 2;
+	sep_avg = (get_max((*lists).a, len) + separater) / 2;
 	while (len > i && separater <= get_max((*lists).a, (*lists).a_len))
 	{
-		lentosep = 0;
-		Rlentosep = 0;
 		if ((*lists).a[0] >= separater)
 		{
 			command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
 			if (sep_avg > (*lists).b[0])
 				command_rb(*lists);
-			while (((*lists).a[lentosep] >= separater) && len > lentosep)
-				lentosep ++;
-			while (((*lists).a[(*lists).a_len - Rlentosep - 1] >= separater && 0 < (*lists).a_len - Rlentosep))
-				Rlentosep ++;
+			if (separater > get_max((*lists).a, (*lists).a_len))
+				break ;
 		}
-		else if (lentosep <= Rlentosep)
+		else
 			command_ra(*lists);
-		else if (lentosep >= Rlentosep)
-			command_rra(*lists);
 		i ++;
 	}
 }
@@ -40,7 +44,7 @@ bool	is_sorted(int *list, size_t len)
 	i = 1;
 	while (i < len)
 	{
-		if(!(list[i - 1] <= list[i]))
+		if (!(list[i - 1] <= list[i]))
 			return (false);
 		i ++;
 	}
@@ -90,11 +94,12 @@ int	get_lentomax(int *list, size_t len)
 		i ++;
 	return (i);
 }
+
 int	get_median(int a, int b, int c)
 {
 	if (a < b && a < c)
 	{
-		if(b < c)
+		if (b < c)
 			return (b);
 		else
 			return (c);
