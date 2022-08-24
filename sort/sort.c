@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:10:42 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 02:23:31 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 02:24:51 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,30 +76,31 @@ static void	sort_lists(t_lists *lists, int separater, size_t *sorted_len)
 	size_t	len;
 	bool	is_separated;
 
+	separater = 0;
 	len = (*lists).b_len;
 	is_separated = false;
-	if ((*lists).b_len > 10)
-	{
-		separate_list_b(lists, separater);
-		is_separated = true;
-	}
-	len -= (*(lists).b_len);
+	// if ((*lists).b_len > 10)
+	// {
+	// 	separate_list_b(lists, separater);
+	// 	is_separated = true;
+	// }
+	len -= ((*lists).b_len);
 	sort_b_and_push_a(lists);
 	if (is_sorted((*lists).a, (*lists).a_len))
 		return ;
 	rotate_list_a(*lists, *sorted_len);
-	if (is_separated)
-	{
-		while (len > 0)
-		{
-			command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
-			len --;
-		}
-		sort_b_and_push_a(lists);
-		if (is_sorted((*lists).a, (*lists).a_len))
-			return ;
-		rotate_list_a(*lists, sorted_len);
-	}
+	// if (is_separated)
+	// {
+	// 	while (len > 0)
+	// 	{
+	// 		command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
+	// 		len --;
+	// 	}
+	// 	sort_b_and_push_a(lists);
+	// 	if (is_sorted((*lists).a, (*lists).a_len))
+	// 		return ;
+	// 	rotate_list_a(*lists, *sorted_len);
+	// }
 }
 
 void	do_quicksort(t_lists lists, size_t len)
