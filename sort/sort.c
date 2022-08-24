@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:10:42 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/24 18:12:28 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/24 18:34:36 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	do_quicksort(t_lists lists, size_t len)
 {
 	size_t	i;
 	size_t	sorted_len;
-	size_t	separate_len;
 	size_t	len_to_max;
 	int		separater;
 	int		max;
@@ -63,11 +62,10 @@ void	do_quicksort(t_lists lists, size_t len)
 	sorted_len = 0;
 	while (!is_sorted(lists.a, lists.a_len))
 	{
-		separate_len = lists.a_len - sorted_len;
-		separater = get_median(get_median(lists.a[0], lists.a[separate_len / 3 / 2], lists.a[separate_len / 3 - 1]),get_median(lists.a[separate_len / 3], lists.a[separate_len / 3 - separate_len / 3 / 2], lists.a[separate_len / 3 * 2 - 1]), get_median(lists.a[separate_len / 3 * 2], lists.a[separate_len / 3 - separate_len / 3 / 2], lists.a[separate_len - 1]));
+		separater = get_separater(lists.a, lists.a_len - sorted_len);
 		if (sorted_len >= len / 2)
-			separater = get_min(lists.a, separate_len);
-		separate_list(&lists, separater, separate_len);
+			separater = get_min(lists.a, lists.a_len - sorted_len);
+		separate_list(&lists, separater, lists.a_len - sorted_len);
 		i = lists.b_len;
 		while (lists.b_len > 0)
 		{
@@ -86,22 +84,25 @@ void	do_quicksort(t_lists lists, size_t len)
 			command_pa(lists, &lists.a_len, &lists.b_len);
 		}
 		sorted_len += i;
-		if (sorted_len >= lists.a_len / 2 && !is_sorted(lists.a, lists.a_len))
+		if (!is_sorted(lists.a, lists.a_len))
 		{
-			i = lists.a_len - sorted_len;
-			while (i > 0)
+			if (sorted_len >= lists.a_len / 2)
 			{
-				command_rra(lists);
-				i --;
+				i = lists.a_len - sorted_len;
+				while (i > 0)
+				{
+					command_rra(lists);
+					i --;
+				}
 			}
-		}
-		else if (sorted_len <= lists.a_len / 2 && !is_sorted(lists.a, lists.a_len))
-		{
-			i = sorted_len;
-			while (i > 0)
+			else if (sorted_len <= lists.a_len / 2)
 			{
-				command_ra(lists);
-				i --;
+				i = sorted_len;
+				while (i > 0)
+				{
+					command_ra(lists);
+					i --;
+				}
 			}
 		}
 	}

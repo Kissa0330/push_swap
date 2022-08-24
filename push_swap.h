@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:56 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/24 18:11:57 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/24 18:36:17 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void		separate_list(t_lists *lists, int separater, size_t len);
 int			get_max(int	*list, size_t len);
 int			get_min(int	*list, size_t len);
 int			get_lentomax(int *list, size_t len);
-int			get_median(int a, int b, int c);
+int			get_med(int a, int b, int c);
+int			get_separater(int *a, size_t separate_len);
 int			*three_sort(int *a, t_lists lists);
 int			*six_sort(t_lists lists);
 void		do_quicksort(t_lists lists, size_t len);
