@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:10:42 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 01:00:26 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 01:20:48 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,23 @@ int	*six_sort(t_lists lists)
 
 static void	sort_lists(t_lists *lists, int separater)
 {
+	size_t	len_org;
 	size_t	len_to_max;
 	int		max;
 
+	len_org = (*lists).b_len;
 	separater = 0;
+	// if ((*lists).b_len > 10)
+	// 	separate_list_b(&lists, separater);
 	while ((*lists).b_len > 0)
 	{
-		// if ((*lists).b_len > 10)
-		// 	separate_list_b(&lists, separater);
 		max = get_max((*lists).b, (*lists).b_len);
 		len_to_max = get_lentomax((*lists).b, (*lists).b_len);
-		if (len_to_max >= (*lists).b_len / 2)
+		while (max != (*lists).b[0])
 		{
-			while (max != (*lists).b[0])
+			if (len_to_max >= (*lists).b_len / 2)
 				command_rrb(*lists);
-		}
-		else if (len_to_max <= (*lists).b_len / 2)
-		{
-			while (max != (*lists).b[0])
+			else if (len_to_max <= (*lists).b_len / 2)
 				command_rb(*lists);
 		}
 		command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
@@ -79,7 +78,6 @@ static void	sort_lists(t_lists *lists, int separater)
 
 void	do_quicksort(t_lists lists, size_t len)
 {
-	size_t	i;
 	size_t	sorted_len;
 	int		separater;
 
@@ -94,16 +92,6 @@ void	do_quicksort(t_lists lists, size_t len)
 		sort_lists(&lists, separater);
 		if (is_sorted(lists.a, lists.a_len))
 			break;
-		i = lists.a_len - sorted_len;
-		if (sorted_len <= lists.a_len / 2)
-			i = sorted_len;
-		while (i > 0)
-		{
-			if (sorted_len >= lists.a_len / 2)
-				command_rra(lists);
-			else
-				command_ra(lists);
-			i --;
-		}
+		rotate_list_a(lists, sorted_len);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:35 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 00:49:59 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 01:19:14 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,33 @@ int	get_separater(int *a, size_t separate_len)
 	return (get_med(m1, m2, m3));
 }
 
-// void	separate_list_b(t_lists *lists, int separater)
-// {
-	
-// }
+void	separate_list_b(t_lists *lists, int separater)
+{
+	int	sep_avg;
+
+	sep_avg = (get_max((*lists).b, (*lists).b_len) + separater) / 2;
+	while ((*lists).b_len >= 0 && sep_avg <= get_max((*lists).b, (*lists).b_len))
+	{
+		if ((*lists).b[0] > sep_avg)
+			command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
+		while (!((*lists).b[0] >= sep_avg))
+				command_rb(*lists);
+	}
+}
+
+void	rotate_list_a(t_lists lists, size_t sorted_len)
+{
+	size_t	i;
+
+	i = lists.a_len - sorted_len;
+	if (sorted_len <= lists.a_len / 2)
+		i = sorted_len;
+	while (i > 0)
+	{
+		if (sorted_len >= lists.a_len / 2)
+			command_rra(lists);
+		else
+			command_ra(lists);
+		i --;
+	}
+}
