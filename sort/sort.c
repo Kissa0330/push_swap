@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:10:42 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 01:20:48 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 02:23:31 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,11 @@ int	*six_sort(t_lists lists)
 	return (lists.a);
 }
 
-static void	sort_lists(t_lists *lists, int separater)
+static void	sort_b_and_push_a(t_lists *lists)
 {
-	size_t	len_org;
 	size_t	len_to_max;
 	int		max;
 
-	len_org = (*lists).b_len;
-	separater = 0;
-	// if ((*lists).b_len > 10)
-	// 	separate_list_b(&lists, separater);
 	while ((*lists).b_len > 0)
 	{
 		max = get_max((*lists).b, (*lists).b_len);
@@ -73,6 +68,37 @@ static void	sort_lists(t_lists *lists, int separater)
 				command_rb(*lists);
 		}
 		command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
+	}
+}
+
+static void	sort_lists(t_lists *lists, int separater, size_t *sorted_len)
+{
+	size_t	len;
+	bool	is_separated;
+
+	len = (*lists).b_len;
+	is_separated = false;
+	if ((*lists).b_len > 10)
+	{
+		separate_list_b(lists, separater);
+		is_separated = true;
+	}
+	len -= (*(lists).b_len);
+	sort_b_and_push_a(lists);
+	if (is_sorted((*lists).a, (*lists).a_len))
+		return ;
+	rotate_list_a(*lists, *sorted_len);
+	if (is_separated)
+	{
+		while (len > 0)
+		{
+			command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
+			len --;
+		}
+		sort_b_and_push_a(lists);
+		if (is_sorted((*lists).a, (*lists).a_len))
+			return ;
+		rotate_list_a(*lists, sorted_len);
 	}
 }
 
@@ -89,9 +115,6 @@ void	do_quicksort(t_lists lists, size_t len)
 			separater = get_min(lists.a, lists.a_len - sorted_len);
 		separate_list(&lists, separater, lists.a_len - sorted_len);
 		sorted_len += lists.b_len;
-		sort_lists(&lists, separater);
-		if (is_sorted(lists.a, lists.a_len))
-			break;
-		rotate_list_a(lists, sorted_len);
+		sort_lists(&lists, separater, &sorted_len);
 	}
 }
