@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:11 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/24 18:11:12 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/24 20:57:14 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ long long	ft_atol(const char *str)
 
 void	error_output(void *stack1, void *stack2)
 {
-	if (stack1)
+	if (stack1 != NULL)
 		free(stack1);
-	if (stack2)
+	if (stack2 != NULL)
 		free(stack2);
 	write(2, "Error\n", 6);
 	exit(EXIT_FAILURE);
