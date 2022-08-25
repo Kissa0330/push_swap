@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:41:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 14:42:51 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 15:03:07 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void	do_quicksort(t_lists lists, size_t len)
 	while (!is_sorted(lists.a, lists.a_len))
 	{
 		separater = get_separater(lists.a, lists.a_len - sorted_len);
+		if (sorted_len >= len / 12 * 11)
+			separater = get_min(lists.a, lists.a_len - sorted_len);
 		separate_list(&lists, separater, lists.a_len - sorted_len);
 		sort_lists(&lists, &sorted_len, len);
 	}
