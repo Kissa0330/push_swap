@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:35 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 14:13:42 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 14:44:45 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ int	get_separater(int *a, size_t separate_len)
 
 void	separate_list_b(t_lists *lists, int sep)
 {
-	while ((*lists).b_len > 0 && sep < get_max((*lists).b, (*lists).b_len))
+	int	*b;
+
+	b = (*lists).b;
+	while ((*lists).b_len > 0 && sep < get_max(b, (*lists).b_len))
 	{
 		if ((*lists).b[0] >= sep)
 			command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
-		while (!((*lists).b[0] >= sep) && sep < get_max((*lists).b, (*lists).b_len))
+		while (!(b[0] >= sep) && sep < get_max(b, (*lists).b_len))
 			command_rb(*lists);
 	}
 }
