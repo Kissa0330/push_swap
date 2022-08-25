@@ -15,7 +15,7 @@ $(NAME): ${OBJS} main.c
 	ar rcs $(LIBNAME) $(OBJS)
 	gcc $(CFLAGS) -o $(NAME) -L. -l_push_swap main.c
 
-.c.o :
+.c.o : $(SRCS)
 	gcc $(CFLAGS) -c $< -o ${<:.c=.o}
 
 clean:
