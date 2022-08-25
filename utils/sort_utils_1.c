@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/26 00:06:55 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/26 01:16:01 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	separate_list(t_lists *lists, int separater, size_t len)
 		i ++;
 	}
 }
-
 
 bool	is_sorted(int *list, size_t len)
 {

@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:41:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 23:58:18 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/26 01:20:38 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	sort_b_and_push_a(t_lists *lists)
 		command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
 	}
 }
-#include <stdio.h>
+
 static void	sort_lists(t_lists *lists, size_t *sorted_len, size_t len)
 {
 	size_t	bf_sorted_len;
@@ -84,55 +84,19 @@ static void	sort_lists(t_lists *lists, size_t *sorted_len, size_t len)
 	while ((*lists).b_len > 0)
 	{
 		remain_len = bf_b_len - *sorted_len + bf_sorted_len;
-		// printf("---------- second separate start ---------\n");
 		while ((*lists).b_len > 30)
 		{
 			remain_len = (*lists).b_len;
 			separate_list_b(lists, get_separater((*lists).b, (*lists).b_len));
 		}
-		// printf("list a\n");
-		// for (size_t i = 0; i < (*lists).a_len; i++)
-		// 	printf("%d ", (*lists).a[i]);
-		// printf("\n");
-		// printf("list b\n");
-		// for (size_t i = 0; i < (*lists).b_len; i++)
-		// 	printf("%d ", (*lists).b[i]);
-		// printf("\n");
-		// printf("---------- second separate finish ---------\n");
 		separate_len = (*lists).b_len;
 		remain_len -= ((*lists).b_len);
 		*sorted_len += separate_len;
-		// printf("---------- sort start ---------\n");
 		sort_b_and_push_a(lists);
-		// printf("list a\n");
-		// for (size_t i = 0; i < (*lists).a_len; i++)
-		// 	printf("%d ", (*lists).a[i]);
-		// printf("\n");
-		// printf("---------- sort finish ---------\n");
 		if (is_sorted((*lists).a, (*lists).a_len))
 			return ;
-		// printf("---------- rotate start ---------\n");
 		rotate_list_a(*lists, separate_len);
-		// printf("list a\n");
-		// for (size_t i = 0; i < (*lists).a_len; i++)
-		// 	printf("%d ", (*lists).a[i]);
-		// printf("\n");
-		// printf("---------- rotate finished---------\n");
-		// printf("---------- push b from a start ---------\n");
-		while (remain_len > 0)
-		{
-			command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
-			remain_len --;
-		}
-		// printf("list a\n");
-		// for (size_t i = 0; i < (*lists).a_len; i++)
-		// 	printf("%d ", (*lists).a[i]);
-		// printf("\n");
-		// printf("list b\n");
-		// for (size_t i = 0; i < (*lists).b_len; i++)
-		// 	printf("%d ", (*lists).b[i]);
-		// printf("\n");
-		// printf("---------- push b from a finish ---------\n");
+		do_pb(lists, remain_len);
 	}
 }
 
@@ -145,25 +109,8 @@ void	do_quicksort(t_lists lists, size_t len)
 	separater = get_separater(lists.a, lists.a_len - sorted_len);
 	while (!is_sorted(lists.a, lists.a_len))
 	{
-		// printf("---------- separate start ---------\nseparater == %d\n", separater);
 		separate_list(&lists, separater, lists.a_len - sorted_len);
 		separater = get_max(lists.a, lists.a_len);
-		// printf("list a\n");
-		// for (size_t i = 0; i < lists.a_len; i++)
-		// 	printf("%d ", lists.a[i]);
-		// printf("\n");
-		// printf("list b\n");
-		// for (size_t i = 0; i < lists.b_len; i++)
-		// 	printf("%d ", lists.b[i]);
-		// printf("\n");
-		// printf("---------- separate finished ---------\n");
-		// printf("---------- sort start ---------\n");
 		sort_lists(&lists, &sorted_len, len);
-		// printf("sorted_len == %zu\n", sorted_len);
-		// printf("list a\n");
-		// for (size_t i = 0; i < lists.a_len; i++)
-		// 	printf("%d ", lists.a[i]);
-		// printf("\n");
-		// printf("---------- sort finished ---------\n");
 	}
 }
