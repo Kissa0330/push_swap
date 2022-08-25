@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:41:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 23:03:44 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 23:58:18 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,14 @@ static void	sort_lists(t_lists *lists, size_t *sorted_len, size_t len)
 	size_t	remain_len;
 	size_t	separate_len;
 
+	len = 0;
 	bf_b_len = (*lists).b_len;
 	bf_sorted_len = *sorted_len;
 	while ((*lists).b_len > 0)
 	{
 		remain_len = bf_b_len - *sorted_len + bf_sorted_len;
 		// printf("---------- second separate start ---------\n");
-		while ((*lists).b_len > len / 10)
+		while ((*lists).b_len > 30)
 		{
 			remain_len = (*lists).b_len;
 			separate_list_b(lists, get_separater((*lists).b, (*lists).b_len));

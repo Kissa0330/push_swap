@@ -6,50 +6,59 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:35 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 18:59:21 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/26 01:04:40 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	get_med(int a, int b, int c)
+static int	*comp_array(int *org, int *copy, size_t len)
 {
-	if (a < b && a < c)
+	size_t	i;
+	size_t	j;
+	size_t	ranking;
+
+	i = 0;
+	while (i < len)
 	{
-		if (b < c)
-			return (b);
-		else
-			return (c);
+		ranking = 1;
+		j = 0;
+		while (j < len)
+		{
+			if (org[i] > org[j])
+				ranking ++;
+			j ++;
+		}
+		copy[i] = ranking;
+		i ++;
 	}
-	if (b < a && b < c)
-	{
-		if (a < c)
-			return (a);
-		else
-			return (c);
-	}
-	if (c < a && c < b)
-	{
-		if (a < b)
-			return (a);
-		else
-			return (b);
-	}
-	return (a);
+	return (copy);
 }
 
 int	get_separater(int *a, size_t separate_len)
 {
-	size_t	div_len;
-	int		m1;
-	int		m2;
-	int		m3;
+	size_t	i;
+	int		*copy;
+	int		sep;
 
-	div_len = separate_len / 3;
-	m1 = get_med(a[0], a[div_len / 2], a[div_len - 1]);
-	m2 = get_med(a[div_len], a[div_len - div_len / 2], a[div_len * 2 - 1]);
-	m3 = get_med(a[div_len * 2], a[div_len - div_len / 2], a[separate_len - 1]);
-	return (get_med(m1, m2, m3));
+	sep = a[0];
+	i = 0;
+	copy = malloc(separate_len * sizeof(int));
+	while (i < separate_len)
+	{
+		copy[i] = a[i];
+		i ++;
+	}
+	comp_array(a, copy, separate_len);
+	i = 0;
+	while (i < separate_len)
+	{
+		if (separate_len / 2 == copy[i])
+			sep = a[i];
+		i ++;
+	}
+	free(copy);
+	return (sep);
 }
 
 void	separate_list_b(t_lists *lists, int sep)
