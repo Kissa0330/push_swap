@@ -5,7 +5,7 @@ UTIL = utils/operations_utils.c utils/push_swap_utils.c utils/sort_utils_1.c uti
 SORT = sort/sort.c
 SRCS = $(OPT) $(UTIL) $(SORT) push_swap.c
 OBJS = ${SRCS:.c=.o}
-#CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 .PHONY : all clean fclean re
 
