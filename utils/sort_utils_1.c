@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 21:54:11 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/25 22:57:02 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	separate_list(t_lists *lists, int separater, size_t len)
 {
-	//separate時にseparater以上の数の配列をsortedな配列の後ろに存在しないようにしなければいけない
 	size_t	i;
 	int		sep_avg;
 
