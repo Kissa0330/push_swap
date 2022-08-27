@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:35 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/26 01:21:18 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/28 01:54:39 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	rotate_list_a(t_lists lists, size_t sorted_len)
 		i = sorted_len;
 	while (i > 0)
 	{
-		if (sorted_len >= lists.a_len / 2)
+		if (sorted_len > lists.a_len / 2)
 			command_rra(lists);
 		else
 			command_ra(lists);
