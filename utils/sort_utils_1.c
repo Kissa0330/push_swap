@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/26 01:16:01 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/26 15:22:05 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 void	separate_list(t_lists *lists, int separater, size_t len)
 {
 	size_t	i;
-	int		sep_avg;
+	int		min;
 
 	i = 0;
-	sep_avg = (get_min((*lists).a, len) + separater) / 2;
 	while (len > i && separater >= get_min((*lists).a, (*lists).a_len))
 	{
+		min = get_min((*lists).a, len);
 		if ((*lists).a[0] <= separater)
 		{
 			command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
-			if (sep_avg > (*lists).b[0] && (*lists).a[0] > separater)
+			if (min == (*lists).b[0] && (*lists).a[0] > separater)
 				command_rr(*lists);
-			else if (sep_avg > (*lists).b[0])
+			else if (min == (*lists).b[0])
 				command_rb(*lists);
 			if (separater < get_min((*lists).a, (*lists).a_len))
 				break ;
