@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:56 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/26 01:21:43 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/28 00:39:42 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_lists
 }	t_lists;
 
 void		push_swap(char **list_origin);
-long long	ft_atol(const char *str);
+long long	ft_atol(const char *str, t_lists lists);
 void		error_output(void *stack1, void *stack2);
 int			*swap(int *list);
 int			*push(int *list1, int *list2, size_t len_1, size_t len_2);

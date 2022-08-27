@@ -6,13 +6,13 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:11 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/24 20:57:14 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/28 00:39:22 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-long long	ft_atol(const char *str)
+long long	ft_atol(const char *str, t_lists lists)
 {
 	int				negativeflag;
 	long long		num;
@@ -28,6 +28,8 @@ long long	ft_atol(const char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str - '0');
+		if (num > 2147483647 || num < -2147483648)
+			error_output(lists.a, NULL);
 		str ++;
 	}
 	return (num * negativeflag);

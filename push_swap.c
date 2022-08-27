@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:48 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/25 22:52:33 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/28 00:39:02 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,7 @@ static t_lists	atoi_list(char **list_origin, size_t len)
 	i = 0;
 	while (list_origin[i] != NULL)
 	{
-		tmp = ft_atol(list_origin[i]);
-		if (tmp > 2147483647 || tmp < -2147483648)
-			error_output(lists.a, NULL);
+		tmp = ft_atol(list_origin[i], lists);
 		j = 0;
 		while (j < i)
 		{
