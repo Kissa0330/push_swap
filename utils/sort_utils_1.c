@@ -6,11 +6,24 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/29 00:47:05 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/29 00:59:09 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+void	juduge_min(t_lists *lists, int min, int sep, size_t *min_count)
+{
+	command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
+	if (min == get_min((*lists).b, (*lists).b_len) && min == (*lists).b[0])
+	{
+		if ((*lists).a[0] > sep)
+			command_rr(*lists);
+		else
+			command_rb(*lists);
+			min_count ++;
+	}
+}
 
 void	push_min_to_a(t_lists *lists, size_t min_count)
 {
@@ -39,15 +52,7 @@ void	separate_list(t_lists *lists, int sep, size_t len, size_t *srt_len)
 		min = get_min((*lists).a, len);
 		if ((*lists).a[0] <= sep)
 		{
-			command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
-			if (min == get_min((*lists).b, (*lists).b_len))
-			{
-				if ((*lists).a[0] > sep)
-					command_rr(*lists);
-				else
-					command_rb(*lists);
-				min_count ++;
-			}
+			juduge_min(lists, min, sep, &min_count);
 			if (sep < get_min((*lists).a, (*lists).a_len))
 				break ;
 		}
@@ -89,16 +94,4 @@ int	get_min(int *list, size_t len)
 		i ++;
 	}
 	return (min);
-}
-
-int	get_lentomax(int *list, size_t len)
-{
-	int		max;
-	size_t	i;
-
-	max = get_max(list, len);
-	i = 0;
-	while (list[i] != max)
-		i ++;
-	return (i);
 }

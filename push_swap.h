@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:56 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/29 00:47:42 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/29 00:58:49 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void		command_rra(t_lists lists);
 void		command_rrb(t_lists lists);
 void		command_rrr(t_lists lists);
 bool		is_sorted(int *list, size_t len);
+void		juduge_min(t_lists *lists, int min, int sep, size_t *min_count);
 void		push_min_to_a(t_lists *lists, size_t min_count);
 void		separate_list(t_lists *lists, int sep, size_t len, size_t *srt_len);
 int			get_max(int	*list, size_t len);
