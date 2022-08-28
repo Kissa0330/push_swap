@@ -6,51 +6,57 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:33:30 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/28 01:36:14 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/29 00:47:05 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	separate_list(t_lists *lists, int separater, size_t len)
+void	push_min_to_a(t_lists *lists, size_t min_count)
 {
 	size_t	i;
+
+	i = 0;
+	while (min_count > i)
+	{
+		command_rrb(*lists);
+		command_pa(*lists, &(*lists).a_len, &(*lists).b_len);
+		i ++ ;
+	}
+	rotate_list_a(*lists, min_count);
+}
+
+void	separate_list(t_lists *lists, int sep, size_t len, size_t *srt_len)
+{
+	size_t	i;
+	size_t	min_count;
 	int		min;
 
 	i = 0;
-	while (len > i && separater >= get_min((*lists).a, (*lists).a_len))
+	min_count = 0;
+	while (len > i && sep >= get_min((*lists).a, (*lists).a_len))
 	{
 		min = get_min((*lists).a, len);
-		if ((*lists).a[0] <= separater)
+		if ((*lists).a[0] <= sep)
 		{
 			command_pb(*lists, &(*lists).a_len, &(*lists).b_len);
-			if (min == (*lists).b[0] && (*lists).a[0] > separater)
-				command_rr(*lists);
-			else if (min == (*lists).b[0])
-				command_rb(*lists);
-			if (separater < get_min((*lists).a, (*lists).a_len))
+			if (min == get_min((*lists).b, (*lists).b_len))
+			{
+				if ((*lists).a[0] > sep)
+					command_rr(*lists);
+				else
+					command_rb(*lists);
+				min_count ++;
+			}
+			if (sep < get_min((*lists).a, (*lists).a_len))
 				break ;
 		}
 		else
 			command_ra(*lists);
 		i ++;
 	}
-}
-
-bool	is_sorted(int *list, size_t len)
-{
-	size_t	i;
-
-	if (len <= 0)
-		return (false);
-	i = 1;
-	while (i < len)
-	{
-		if (!(list[i - 1] <= list[i]))
-			return (false);
-		i ++;
-	}
-	return (true);
+	*srt_len += min_count;
+	push_min_to_a(lists, min_count);
 }
 
 int	get_max(int *list, size_t len)
