@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:41:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/29 00:29:17 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/29 01:20:56 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,14 @@ int	*three_sort(int *a, t_lists lists)
 
 int	*six_sort(t_lists lists)
 {
-	size_t	i;
 	int		min;
 
 	while (lists.a_len > 3)
 	{
 		min = get_min(lists.a, lists.a_len);
-		i = 0;
-		while (lists.a[i] != min)
-			i ++;
 		if (lists.a[0] == min)
 			command_pb(lists, &lists.a_len, &lists.b_len);
-		else if (lists.a_len / 2 < i)
+		else if (get_lentomin(lists.a, lists.a_len) > lists.a_len / 2)
 			command_rra(lists);
 		else
 			command_ra(lists);
@@ -111,10 +107,14 @@ void	do_quicksort(t_lists lists, size_t len)
 	size_t	sorted_len;
 	int		separater;
 
+	if (is_sorted(lists.a, len))
+		return ;
 	sorted_len = 0;
 	separater = get_separater(lists.a, lists.a_len);
 	separate_list(&lists, separater, lists.a_len, &sorted_len);
 	sort_lists(&lists, &sorted_len, len);
+	if (is_sorted(lists.a, len))
+		return ;
 	separater = get_max(lists.a, lists.a_len);
 	separate_list(&lists, separater, lists.a_len - sorted_len, &sorted_len);
 	sort_lists(&lists, &sorted_len, len);

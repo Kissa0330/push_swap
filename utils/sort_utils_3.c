@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 00:37:39 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/29 00:59:12 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/29 01:11:41 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bool	is_sorted(int *list, size_t len)
 	return (true);
 }
 
-int	get_lentomax(int *list, size_t len)
+size_t	get_lentomax(int *list, size_t len)
 {
 	int		max;
 	size_t	i;
@@ -36,6 +36,18 @@ int	get_lentomax(int *list, size_t len)
 	max = get_max(list, len);
 	i = 0;
 	while (list[i] != max)
+		i ++;
+	return (i);
+}
+
+size_t	get_lentomin(int *list, size_t len)
+{
+	int		min;
+	size_t	i;
+
+	min = get_min(list, len);
+	i = 0;
+	while (list[i] != min)
 		i ++;
 	return (i);
 }
