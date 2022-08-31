@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:41:09 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/29 01:20:56 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/29 20:16:09 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	*six_sort(t_lists lists)
 {
 	int		min;
 
+	if (is_sorted(lists.a, lists.a_len))
+		return (lists.a);
 	while (lists.a_len > 3)
 	{
 		min = get_min(lists.a, lists.a_len);

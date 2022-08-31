@@ -6,7 +6,7 @@
 /*   By: takanoraika <takanoraika@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:11:11 by takanoraika       #+#    #+#             */
-/*   Updated: 2022/08/28 00:39:22 by takanoraika      ###   ########.fr       */
+/*   Updated: 2022/08/29 20:38:44 by takanoraika      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ long long	ft_atol(const char *str, t_lists lists)
 	while (*str >= '0' && *str <= '9')
 	{
 		num = num * 10 + (*str - '0');
-		if (num > 2147483647 || num < -2147483648)
+		if (num > 2147483647 && negativeflag == 1)
+			error_output(lists.a, NULL);
+		if (num > 2147483648 && negativeflag == -1)
 			error_output(lists.a, NULL);
 		str ++;
 	}
