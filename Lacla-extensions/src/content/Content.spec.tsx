@@ -7,7 +7,7 @@ import Content from './Content';
 describe('content', () => {
   test('renders content example', () => {
     render(
-        <Content />
+        <Content originalText='Original Text' />
     );
     expect(screen.getByText('Content Example')).toBeInTheDocument();
   });

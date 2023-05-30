@@ -20,9 +20,27 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     if (tab !== undefined) {
       switch (info.menuItemId) {
         case 'translation':
-          console.log(info.selectionText);
+            const selectedText = info.selectionText !== undefined ? info.selectionText : '';
+             chrome.tabs.sendMessage(tab.id as number, {
+               type: 'SHOW',
+               data: {
+                 originalText: selectedText,
+               },
+             });
           break;
       }
+    }
+  });
+
+  chrome.runtime.onMessage.addListener(async function (message, sender, sendResponse) {
+    if (message.type === 'TRANSLATE') {
+      const selectedText = message.data.selectionText ?? '';
+      chrome.tabs.sendMessage(sender.tab?.id as number, {
+        type: 'SHOW',
+        data: {
+          originalText: selectedText,
+        },
+      });
     }
   });
 
