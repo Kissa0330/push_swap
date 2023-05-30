@@ -1,5 +1,4 @@
 import browser from 'webextension-polyfill';
-
 import { isDev } from '../shared/utils';
 
 // show welcome page on new install
