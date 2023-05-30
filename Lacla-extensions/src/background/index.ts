@@ -1,11 +1,6 @@
 import browser from 'webextension-polyfill';
 
-import store from '../app/store';
 import { isDev } from '../shared/utils';
-
-store.subscribe(() => {
-  console.log('state', store.getState());
-});
 
 // show welcome page on new install
 browser.runtime.onInstalled.addListener(async (details) => {
@@ -14,6 +9,21 @@ browser.runtime.onInstalled.addListener(async (details) => {
     const url = browser.runtime.getURL(isDev ? 'src/welcome/welcome.html' : 'welcome.html'); // TODO: better approach
     await browser.tabs.create({ url });
   }
+  chrome.contextMenus.create({
+    id: 'translation',
+    title: '選択したテキストを翻訳',
+    contexts: ['selection'],
+  });
 });
+
+chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+    if (tab !== undefined) {
+      switch (info.menuItemId) {
+        case 'translation':
+          console.log(info.selectionText);
+          break;
+      }
+    }
+  });
 
 export {};
